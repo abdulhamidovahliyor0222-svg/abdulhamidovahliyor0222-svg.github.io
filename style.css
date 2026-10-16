@@ -37,3 +37,7 @@ h2{font-size:clamp(36px,5vw,64px);line-height:1}
 .lbtxt a{color:#ff5b2e}.x{position:absolute;top:18px;right:26px;background:none;border:0;color:#fff;font-size:40px;cursor:pointer}
 @media(max-width:900px){.grid{grid-template-columns:repeat(2,1fr)}.split{grid-template-columns:1fr}.lbin{grid-template-columns:1fr}}
 @media(max-width:600px){nav a{display:none}section{padding:72px 6vw}.grid{grid-template-columns:1fr}.services li{grid-template-columns:1fr;gap:4px}.timeline li{grid-template-columns:1fr;gap:2px}}
+.case{display:grid;grid-template-columns:1.2fr 1fr;gap:40px;align-items:center;background:var(--card);border:1px solid var(--line);border-radius:14px;padding:22px;margin-bottom:40px;transition:border-color .3s}
+.case:hover{border-color:#0068A8}.case img{width:100%;border-radius:10px;display:block}.case h3{font-family:"Instrument Serif",serif;font-weight:400;font-size:clamp(28px,3vw,42px);line-height:1.05;margin-bottom:14px}
+.case p{color:var(--mut);font-size:15px}.case .more{display:inline-block;margin-top:18px;color:#3da5e8;font-size:14px}
+@media(max-width:900px){.case{grid-template-columns:1fr;gap:20px}}
