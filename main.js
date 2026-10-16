@@ -1,0 +1,14 @@
+const L={motion:"Motion",logo:"Logo animation",intro:"Intro",social:"Animated post",print:"Static design",ui:"UI/UX"};
+const g=document.getElementById('grid');
+g.innerHTML=W.map((w,i)=>{const[s,t,c,cat,d,v,p,vid,set]=w;const thumb=set?`media/${s}-${set[0]}.jpg`:vid?`media/${s}-frame.jpg`:`media/${s}.jpg`;
+return `<article class="tile" data-c="${cat}" data-i="${i}"><div class="m">${vid?`<video src="media/${s}.mp4" poster="${thumb}" muted loop playsinline preload="none"></video>`:`<img src="${thumb}" alt="${t}" loading="lazy">`}</div><h3>${t}</h3><p><span>${L[cat]}${c!=="—"?" · "+c:""}</span><span>${v} views</span></p></article>`}).join('');
+const io=new IntersectionObserver(es=>es.forEach(e=>{const v=e.target;e.isIntersecting?v.play().catch(()=>{}):v.pause()}),{threshold:.25});
+g.querySelectorAll('video').forEach(v=>io.observe(v));
+document.querySelectorAll('.filters button').forEach(b=>b.onclick=()=>{document.querySelectorAll('.filters button').forEach(x=>x.classList.remove('on'));b.classList.add('on');
+g.querySelectorAll('.tile').forEach(t=>t.style.display=(b.dataset.f=='all'||t.dataset.c==b.dataset.f)?'':'none')});
+const lb=document.getElementById('lb'),lm=document.getElementById('lbmedia'),lt=document.getElementById('lbtxt');
+g.onclick=e=>{const t=e.target.closest('.tile');if(!t)return;const[s,ti,c,cat,d,v,p,vid,set]=W[t.dataset.i];
+lm.className=set?'multi':'';lm.innerHTML=vid?`<video src="media/${s}.mp4" controls autoplay loop playsinline></video>`:set?set.map(x=>`<img src="media/${s}-${x}.jpg" alt="">`).join(''):`<img src="media/${s}.jpg" alt="">`;
+lt.innerHTML=`<h3>${ti}</h3><dl><dt>Client</dt><dd>${c}</dd><dt>Type</dt><dd>${L[cat]}</dd><dt>Date</dt><dd>${d}</dd><dt>Views on Telegram</dt><dd>${v}</dd></dl><p style="margin-top:20px"><a href="https://t.me/khamidov_mt/${p}" target="_blank" rel="noopener">Original post ↗</a></p>`;lb.hidden=false};
+const close=()=>{lb.hidden=true;lm.innerHTML=''};lb.querySelector('.x').onclick=close;lb.onclick=e=>{if(e.target===lb)close()};onkeydown=e=>{if(e.key=='Escape')close()};
+const th=document.getElementById('theme'),r=document.documentElement;r.dataset.theme=localStorage.theme||'dark';th.onclick=()=>{r.dataset.theme=localStorage.theme=r.dataset.theme=='dark'?'light':'dark'};
